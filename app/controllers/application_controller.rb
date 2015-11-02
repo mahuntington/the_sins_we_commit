@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     render '/welcome'
   end
 
+  def spa
+    render '/spa'
+  end
+
   private
 
   def current_user
