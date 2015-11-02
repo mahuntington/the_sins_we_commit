@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="SinsApp">
 <head>
   <title>TheSinsWeCommit</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" charset="utf-8"></script>
 </head>
-<body>
-
+<body ng-controller="MainController as main">
+  {{main.foo}}
   <%= yield %>
 
+  <%= javascript_include_tag 'spa', 'data-turbolinks-track' => true %>
 </body>
 </html>
