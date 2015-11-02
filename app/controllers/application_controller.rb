@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def spa
-    render '/spa'
+    render '/spa', layout:'spa'
   end
 
   private
