@@ -12,7 +12,11 @@
     <h2>Your Beautiful Transgressions</h2>
     <ul>
       <li ng-repeat="transgression in transgressionsCtrl.transgressions">
-
+        Sin Type: {{transgression.sin_type}}
+        <br/>
+        Description: {{transgression.description}}
+        <br/>
+        Created: {{transgression.authored_at}}
       </li>
     </ul>
   </section>
