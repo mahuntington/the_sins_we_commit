@@ -21,10 +21,14 @@
     </ul>
     <h2>The Flesh is Weak</h2>
     <form ng-submit="transgressionsCtrl.createTransgression()">
-      <input
-        type="text"
-        ng-model="transgressionsCtrl.newTransgressionSinType"
-        placeholder="How have you pleased me?" />
+      Your Weakness:
+      <select ng-model="transgressionsCtrl.newTransgressionSinType">
+        <option
+          value="{{SIN_TYPE}}"
+          ng-repeat="SIN_TYPE in transgressionsCtrl.SIN_TYPES track by $index">
+          {{SIN_TYPE}}
+        </option>
+      </select>
       <br/>
       <textarea
         ng-model="transgressionsCtrl.newTransgressionDescription"

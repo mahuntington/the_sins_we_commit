@@ -13,6 +13,8 @@ app.controller('TransgressionsController', ['$http', function($http){
     controller.transgressions = data.transgressions;
   });
 
+  this.SIN_TYPES = [ 'Gluttony', 'Greed', 'Anger', 'Pride', 'Lust', 'Sloth', 'Envy'];
+
   this.createTransgression = function(){
     var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     $http.post('/transgressions', {
