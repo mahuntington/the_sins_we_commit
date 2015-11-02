@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'application#welcome'
 
+  get 'application/spa'
+
   resources :transgressions, only: [:index, :create], defaults: { format: :json } do
     resources :confessions, only: [:create], shallow: true
   end
