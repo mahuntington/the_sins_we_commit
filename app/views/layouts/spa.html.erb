@@ -6,10 +6,8 @@
   <%= csrf_meta_tags %>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" charset="utf-8"></script>
 </head>
-<body ng-controller="MainController as main">
-  {{main.foo}}
+<body>
   <%= yield %>
-
   <%= javascript_include_tag 'spa', 'data-turbolinks-track' => true %>
 </body>
 </html>
