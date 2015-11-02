@@ -19,5 +19,20 @@
         Created: {{transgression.authored_at}}
       </li>
     </ul>
+    <h2>The Flesh is Weak</h2>
+    <form ng-submit="transgressionsCtrl.createTransgression()">
+      <input
+        type="text"
+        ng-model="transgressionsCtrl.newTransgressionSinType"
+        placeholder="How have you pleased me?" />
+      <br/>
+      <textarea
+        ng-model="transgressionsCtrl.newTransgressionDescription"
+        placeholder="Yes! Now describe it to me, mortal"></textarea>
+      <br/>
+      <input
+        type="Submit"
+        value="Feed Me!" />
+    </form>
   </section>
 </main>
