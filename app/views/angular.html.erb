@@ -14,7 +14,9 @@
 
   <h2>The Flesh is Weak: Admit Your Transgressions</h2>
   <form ng-submit="transgressions.createTransgression()">
-    <input type="text" ng-model="transgressions.newTransgressionSinType" placeholder="Sin Type"/>
+    <select ng-model="transgressions.newTransgressionSinType">
+      <option ng-repeat="sinType in transgressions.SIN_TYPES">{{sinType}}</option>
+    </select>
     <input type="text" ng-model="transgressions.newTransgressionDescription" placeholder="How Have You Pleased Me?"/>
     <input type="submit" value="Feed Me Your Regrets" />
   </form>

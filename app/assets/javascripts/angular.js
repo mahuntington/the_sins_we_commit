@@ -17,6 +17,10 @@ app.controller('TransgressionsController', ['$http', function($http){
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var controller = this;
 
+  // Sin Types for Select in HTML
+  this.SIN_TYPES = [ 'Gluttony', 'Greed', 'Anger', 'Pride', 'Lust', 'Sloth', 'Envy' ];
+  this.newTransgressionSinType = 'Gluttony';
+
   var getTransgressions = function(){
     // get transgressions for current User
     $http.get('/transgressions').success(function(data){
