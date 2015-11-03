@@ -31,8 +31,8 @@ app.controller('TransgressionsController', ['$http', function($http){
       authenticity_token: authenticity_token,
       //values from form
       transgression: {
-        sin_type: "Gluttony",
-        description: "Hard coded values make me repent!"
+        sin_type: this.newTransgressionSinType,
+        description: this.newTransgressionDescription
       }
     }).success(function(data){
       console.log(data);
