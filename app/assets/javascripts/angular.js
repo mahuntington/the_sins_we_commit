@@ -32,6 +32,12 @@ app.controller('TransgressionsController', ['$http', function($http){
 
   // create a transgression
   this.createTransgression = function(){
+
+    controller.current_user_transgressions.push({
+      sin_type: this.newTransgressionSinType + "...loading",
+      description: this.newTransgressionDescription + "...loading"
+    });
+
     //make a post to /transgressions
     $http.post('/transgressions', {
       //include authenticity_token
@@ -42,7 +48,9 @@ app.controller('TransgressionsController', ['$http', function($http){
         description: this.newTransgressionDescription
       }
     }).success(function(data){
-        getTransgressions();
+      controller.current_user_transgressions.pop();
+      controller.current_user_transgressions.push(data.transgression);
+      getTransgressions();
     });
   }
 }]);
