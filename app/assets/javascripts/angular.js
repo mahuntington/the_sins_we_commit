@@ -21,6 +21,7 @@ app.controller('TransgressionsController', ['$http', function($http){
   this.SIN_TYPES = [ 'Gluttony', 'Greed', 'Anger', 'Pride', 'Lust', 'Sloth', 'Envy' ];
   this.newTransgressionSinType = 'Gluttony';
 
+  //this fetches transgression data and adds it to controller
   var getTransgressions = function(){
     // get transgressions for current User
     $http.get('/transgressions').success(function(data){
@@ -28,11 +29,16 @@ app.controller('TransgressionsController', ['$http', function($http){
       controller.current_user_transgressions = data.transgressions;
     });
   }
+  //fetch transgression data for current user as TransgressionsController initializes
   getTransgressions();
 
   // create a transgression
   this.createTransgression = function(){
 
+    //as soon as function is called,
+    //get transgression data (from form)
+    //and push it onto controller's current_user_transgressions property
+    //this way the data is there immeditely, while we wait for the ajax calls to return
     controller.current_user_transgressions.push({
       sin_type: this.newTransgressionSinType + "...loading",
       description: this.newTransgressionDescription + "...loading"
@@ -48,6 +54,9 @@ app.controller('TransgressionsController', ['$http', function($http){
         description: this.newTransgressionDescription
       }
     }).success(function(data){
+      //once response to create transgression comes back, 
+      //pop off what was pushed at beginning of this.createTransgression
+      //push the response's data on...
       controller.current_user_transgressions.pop();
       controller.current_user_transgressions.push(data.transgression);
       getTransgressions();
