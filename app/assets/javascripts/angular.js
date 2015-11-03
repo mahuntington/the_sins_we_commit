@@ -59,6 +59,7 @@ app.controller('TransgressionsController', ['$http', function($http){
       //push the response's data on...
       controller.current_user_transgressions.pop();
       controller.current_user_transgressions.push(data.transgression);
+      //...and begin refreshing transgression data
       getTransgressions();
     });
   }
