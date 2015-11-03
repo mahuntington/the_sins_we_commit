@@ -17,11 +17,14 @@ app.controller('TransgressionsController', ['$http', function($http){
   var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   var controller = this;
 
-  // get transgressions for current User
-  $http.get('/transgressions').success(function(data){
-    //just add the transgressions to the controller, data comes back with sinner as well
-    controller.current_user_transgressions = data.transgressions;
-  });
+  var getTransgressions = function(){
+    // get transgressions for current User
+    $http.get('/transgressions').success(function(data){
+      //just add the transgressions to the controller, data comes back with sinner as well
+      controller.current_user_transgressions = data.transgressions;
+    });
+  }
+  getTransgressions();
 
   // create a transgression
   this.createTransgression = function(){
