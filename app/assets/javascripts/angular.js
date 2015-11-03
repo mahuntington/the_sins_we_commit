@@ -7,3 +7,7 @@ app.controller('HeaderController', ['$http', function($http){
     console.log(controller.current_user);
   })
 }]);
+
+app.controller('TransgressionsController', ['$http', function($http){
+  this.foo = 'bar'
+}]);
