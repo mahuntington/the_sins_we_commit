@@ -13,6 +13,7 @@ class SessionController < ApplicationController
       user.update(session_token: token)
 
       flash[:message] = "Thanks for logging in, sinner."
+      redirect_to application_angular_path
     else
       flash[:message] = "Email / Password combo does not exist!"
     end

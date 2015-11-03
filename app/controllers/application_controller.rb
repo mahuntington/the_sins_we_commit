@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def angular
+    render '/angular'
+  end
+
   def welcome
     render '/welcome'
   end
