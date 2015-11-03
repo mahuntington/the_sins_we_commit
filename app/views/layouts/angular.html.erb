@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="SinsApp">
 <head>
   <title>TheSinsWeCommit</title>
   <%= stylesheet_link_tag    'angular', media: 'all', 'data-turbolinks-track' => true %>
@@ -8,5 +8,6 @@
 </head>
 <body>
   <%= yield %>
+  <%= javascript_include_tag 'angular', 'data-turbolinks-track' => true %>
 </body>
 </html>
