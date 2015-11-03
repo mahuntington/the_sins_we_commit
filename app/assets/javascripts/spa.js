@@ -14,6 +14,7 @@ app.controller('TransgressionsController', ['$http', function($http){
   });
 
   this.SIN_TYPES = [ 'Gluttony', 'Greed', 'Anger', 'Pride', 'Lust', 'Sloth', 'Envy'];
+  this.newTransgressionSinType = 'Gluttony';
 
   this.createTransgression = function(){
     var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

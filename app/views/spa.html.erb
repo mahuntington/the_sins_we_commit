@@ -21,8 +21,8 @@
     </ul>
     <h2>The Flesh is Weak</h2>
     <form ng-submit="transgressionsCtrl.createTransgression()">
+      I feast upon your weakness:
       <select ng-model="transgressionsCtrl.newTransgressionSinType">
-        <option selected>Your Weakness:</option>
         <option
           value="{{SIN_TYPE}}"
           ng-repeat="SIN_TYPE in transgressionsCtrl.SIN_TYPES track by $index">
