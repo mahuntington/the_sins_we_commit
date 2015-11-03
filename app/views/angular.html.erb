@@ -3,6 +3,15 @@
 
 </header>
 <main ng-controller="TransgressionsController as transgressions">
+  <h2>This is How You've Pleased Me: Your Current Transgressions</h2>
+  <ul>
+    <li ng-repeat="transgression in transgressions.current_user_transgressions">
+      Sin Type: {{transgression.sin_type}}
+      <br/>
+      Description: {{transgression.description}}
+    </li>
+  </ul>
+
   <h2>The Flesh is Weak: Admit Your Transgressions</h2>
   <form ng-submit="transgressions.createTransgression()">
     <input type="text" placeholder="Sin Type"/>
