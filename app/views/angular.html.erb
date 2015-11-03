@@ -3,5 +3,10 @@
 
 </header>
 <main ng-controller="TransgressionsController as transgressions">
-  {{transgressions.foo}}
+  <h2>The Flesh is Weak: Admit Your Transgressions</h2>
+  <form ng-submit="transgressions.createTransgression()">
+    <input type="text" placeholder="Sin Type"/>
+    <input type="text" placeholder="How Have You Pleased Me?"/>
+    <input type="submit" value="Feed Me Your Regrets" />
+  </form>
 </main>
