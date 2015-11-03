@@ -38,7 +38,7 @@ app.controller('TransgressionsController', ['$http', function($http){
         description: this.newTransgressionDescription
       }
     }).success(function(data){
-      console.log(data);
+        getTransgressions();
     });
   }
 }]);
