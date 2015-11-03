@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151102165102) do
 
   create_table "confessions", force: :cascade do |t|
     t.integer  "transgression_id"
-    t.datetime "occurred_at",      default: '2015-10-30 13:30:09', null: false
+    t.datetime "occurred_at",      default: '2015-11-03 15:03:28', null: false
     t.string   "description",                                      null: false
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
