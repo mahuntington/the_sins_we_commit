@@ -11,7 +11,7 @@ POST /session will create a new session, redirect to SPA page
 ---
 ## JSON
 
-GET /current_user will return JSON object containing currently logged in user
+GET /session will return JSON object containing currently logged in user
 
 GET /transgressions will return array of transgressions complete with confessions subarray
 
