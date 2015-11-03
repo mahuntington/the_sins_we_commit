@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def angular
-    render '/angular'
+    render '/angular', layout: 'angular'
   end
 
   def welcome
