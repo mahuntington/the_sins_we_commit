@@ -30,4 +30,19 @@ app.controller('TransgressionsController', ['$http', function($http){
       });
     });
   }
+
+  this.createConfession = function(transgression_id){
+    var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    $http.post('/transgressions/'+transgression_id+'/confessions', {
+      authenticity_token: csrf,
+      confession: {
+        occurred_at: this.newConfessionDate,
+        description: this.newConfessionDescription
+      }
+    }).success(function(data){
+      $http.get('/transgressions').success(function(data){
+        controller.transgressions = data.transgressions;
+      });
+    });
+  }
 }]);

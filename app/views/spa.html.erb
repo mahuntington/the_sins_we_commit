@@ -17,10 +17,18 @@
         Description: {{transgression.description}}
         <br/>
         Created: {{transgression.authored_at}}
-        <form>
+        <h3>Moments of Glory</h3>
+        <ul>
+          <li ng-repeat="confession in transgression.confessions">
+            {{confession.description}}
+            <br/>
+            {{confession.occurred_at}}
+          </li>
+        </ul>
+        <form ng-submit="transgressionsCtrl.createConfession(transgression.id)">
           <h3>When was your soul last weak?</h3>
-          <input type="text" placeholder="What happened?" />
-          <input type="date" placeholder="When?" />
+          <input type="text" ng-model="transgressionsCtrl.newConfessionDescription" placeholder="What happened?" />
+          <input type="text" ng-model="transgressionsCtrl.newConfessionDate" placeholder="When?" />
           <input type="submit" value="Each step brings you closer to me" />
         </form>
       </li>
