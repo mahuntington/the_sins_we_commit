@@ -63,4 +63,10 @@ app.controller('TransgressionsController', ['$http', function($http){
       getTransgressions();
     });
   }
+
+  this.createConfession = function(transgression_id){
+    console.log(this);
+    console.log(this.newConfessionDescription);
+    console.log(this.newConfessionDate);
+  }
 }]);
