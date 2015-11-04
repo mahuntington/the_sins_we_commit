@@ -20,9 +20,8 @@ app.controller('TransgressionsController', ['$http', function($http){
   // Sin Types for Select in HTML
   this.SIN_TYPES = [ 'Gluttony', 'Greed', 'Anger', 'Pride', 'Lust', 'Sloth', 'Envy' ];
   this.newTransgressionSinType = 'Gluttony';
-
   //this fetches transgression data and adds it to controller
-  var getTransgressions = function(){
+  this.getTransgressions = function(){
     // get transgressions for current User
     $http.get('/transgressions').success(function(data){
       //just add the transgressions to the controller, data comes back with sinner as well
@@ -30,7 +29,7 @@ app.controller('TransgressionsController', ['$http', function($http){
     });
   }
   //fetch transgression data for current user as TransgressionsController initializes
-  getTransgressions();
+  this.getTransgressions();
 
   // create a transgression
   this.createTransgression = function(){
@@ -60,23 +59,28 @@ app.controller('TransgressionsController', ['$http', function($http){
       controller.current_user_transgressions.pop();
       controller.current_user_transgressions.push(data.transgression);
       //...and begin refreshing transgression data
-      getTransgressions();
+      controller.getTransgressions();
     });
   }
+}]);
 
-  // create a confession for a transgression identified by transgression_id
-  this.createConfession = function(transgression_id){
-    //AJAX call using parameter that identifies transgression
-    $http.post('/transgressions/'+transgression_id+'/confessions', {
-      //include authenticity_token
-      authenticity_token: authenticity_token,
-      confession: {
-        description: this.newConfessionDescription,
-        occurred_at: this.newConfessionDate
-      }
-    }).success(function(data){
-      //refresh transgression data once POST is complete
-      getTransgressions();
-    });
+app.controller('ConfessionsController', ['$http', '$scope', function($http, $scope){
+  //get authenticity_token from DOM (rails injects it on load)
+  var authenticity_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+  // create a confession.!
+  this.createConfession = function(){
+      //AJAX call using parameter that identifies transgression
+      $http.post('/transgressions/'+$scope.$parent.transgression.id+'/confessions', {
+        //include authenticity_token
+        authenticity_token: authenticity_token,
+        confession: {
+          description: this.newConfessionDescription,
+          occurred_at: this.newConfessionDate
+        }
+      }).success(function(data){
+        //refresh transgression data once POST is complete
+        $scope.$parent.transgressionsCtrl.getTransgressions();
+      });
   }
 }]);
