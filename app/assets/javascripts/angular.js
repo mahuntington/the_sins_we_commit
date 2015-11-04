@@ -54,7 +54,7 @@ app.controller('TransgressionsController', ['$http', function($http){
         description: this.newTransgressionDescription
       }
     }).success(function(data){
-      //once response to create transgression comes back, 
+      //once response to create transgression comes back,
       //pop off what was pushed at beginning of this.createTransgression
       //push the response's data on...
       controller.current_user_transgressions.pop();
@@ -64,7 +64,9 @@ app.controller('TransgressionsController', ['$http', function($http){
     });
   }
 
+  // create a confession for a transgression identified by transgression_id
   this.createConfession = function(transgression_id){
+    //AJAX call using parameter that identifies transgression
     $http.post('/transgressions/'+transgression_id+'/confessions', {
       //include authenticity_token
       authenticity_token: authenticity_token,
@@ -73,6 +75,7 @@ app.controller('TransgressionsController', ['$http', function($http){
         occurred_at: this.newConfessionDate
       }
     }).success(function(data){
+      //refresh transgression data once POST is complete
       getTransgressions();
     });
   }
