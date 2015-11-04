@@ -65,8 +65,15 @@ app.controller('TransgressionsController', ['$http', function($http){
   }
 
   this.createConfession = function(transgression_id){
-    console.log(this);
-    console.log(this.newConfessionDescription);
-    console.log(this.newConfessionDate);
+    $http.post('/transgressions/'+transgression_id+'/confessions', {
+      //include authenticity_token
+      authenticity_token: authenticity_token,
+      confession: {
+        description: this.newConfessionDescription,
+        occurred_at: this.newConfessionDate
+      }
+    }).success(function(data){
+      console.log(data)
+    });
   }
 }]);
