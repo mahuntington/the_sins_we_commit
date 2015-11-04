@@ -2,18 +2,18 @@
   <h1>Greetings {{header.current_user.email}}, you are a glorious reprobate!</h1>
 
 </header>
-<main ng-controller="TransgressionsController as transgressions">
+<main ng-controller="TransgressionsController as transgressionsCtrl">
   <h2>This is How You've Pleased Me: Your Current Transgressions</h2>
   <ul>
-    <li ng-repeat="transgression in transgressions.current_user_transgressions">
+    <li ng-repeat="transgression in transgressionsCtrl.current_user_transgressions">
       Sin Type: {{transgression.sin_type}}
       <br/>
       Description: {{transgression.description}}
       <h3>Add a confession (yum):</h3>
-      <form ng-submit="transgressions.createConfession(transgression.id)">
-        <input type="text" ng-model="transgressions.newConfessionDescription" placeholder="How did you please me?"/>
+      <form ng-submit="transgressionsCtrl.createConfession(transgression.id)">
+        <input type="text" ng-model="transgressionsCtrl.newConfessionDescription" placeholder="How did you please me?"/>
         <br/>
-        <input type="text"  ng-model="transgressions.newConfessionDate" placeholder="When did it happen?"/>
+        <input type="text"  ng-model="transgressionsCtrl.newConfessionDate" placeholder="When did it happen?"/>
         <br/>
         <input type="submit" value="YESSS!" />
         <br/>
@@ -23,11 +23,11 @@
   </ul>
 
   <h2>The Flesh is Weak: Admit Your Transgressions</h2>
-  <form ng-submit="transgressions.createTransgression()">
-    <select ng-model="transgressions.newTransgressionSinType">
-      <option ng-repeat="sinType in transgressions.SIN_TYPES">{{sinType}}</option>
+  <form ng-submit="transgressionsCtrl.createTransgression()">
+    <select ng-model="transgressionsCtrl.newTransgressionSinType">
+      <option ng-repeat="sinType in transgressionsCtrl.SIN_TYPES">{{sinType}}</option>
     </select>
-    <input type="text" ng-model="transgressions.newTransgressionDescription" placeholder="How Have You Pleased Me?"/>
+    <input type="text" ng-model="transgressionsCtrl.newTransgressionDescription" placeholder="How Have You Pleased Me?"/>
     <input type="submit" value="Feed Me Your Regrets" />
   </form>
 </main>
