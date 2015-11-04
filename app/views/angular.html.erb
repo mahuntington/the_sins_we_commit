@@ -9,6 +9,14 @@
       Sin Type: {{transgression.sin_type}}
       <br/>
       Description: {{transgression.description}}
+      <h3>Show me what you got:</h3>
+      <ul>
+          <li ng-repeat="confession in transgression.confessions">
+            What happened: {{confession.description}}
+            <br/>
+            When:  {{confession.occurred_at}}
+          </li>
+      </ul>
       <h3>Add a confession (yum):</h3>
       <form ng-submit="transgressionsCtrl.createConfession(transgression.id)">
         <input type="text" ng-model="transgressionsCtrl.newConfessionDescription" placeholder="How did you please me?"/>
