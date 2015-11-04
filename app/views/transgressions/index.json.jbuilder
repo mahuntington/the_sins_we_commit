@@ -10,6 +10,6 @@ json.transgressions(@transgressions) do |trans|
   json.confessions(trans.confessions) do |conf|
     json.id conf.id
     json.description conf.description
-    json.occurred_at time_ago_in_words(conf.created_at) + " ago"
+    json.occurred_at time_ago_in_words(conf.occurred_at) + " ago"
   end
 end
