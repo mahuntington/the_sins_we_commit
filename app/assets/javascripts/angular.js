@@ -73,7 +73,7 @@ app.controller('TransgressionsController', ['$http', function($http){
         occurred_at: this.newConfessionDate
       }
     }).success(function(data){
-      console.log(data)
+      getTransgressions();
     });
   }
 }]);
